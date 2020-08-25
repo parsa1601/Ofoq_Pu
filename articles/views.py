@@ -13,4 +13,3 @@ class IndexView(generic.ListView):
 
 def articles_list(request):
     return HttpResponse("Temporary layout for the articles menu")
-#hello guys :)
