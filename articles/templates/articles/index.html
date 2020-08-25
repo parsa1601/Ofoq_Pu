@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-{% if text %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    {% for article in text %}
-        <h3>{{ article.title}}</h3>
-        <h5>{{ article.summary }}</h5>
-    {% endfor %}
-</head>
-{% endif %}
+<html dir="rtl" lang="fa">
+    <title>جدیدترین مطالب نشریه افق</title>
+    <h1 style="text-align:center;">جدیدترین مطالب و مقالات را در اینجا بخوانید!</h1>
+    {% if text %}
+    <body>
+        <meta charset="UTF-8">
+        {% for article in text %}
+            <h2>{{ article.title}}</h2>
+            <blockquote><h4>{{ article.summary }}</h4></blockquote>
+            <hr>
+        {% endfor %}
+    </body>
+    {% endif %}
 </html>
