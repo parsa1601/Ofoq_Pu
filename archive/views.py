@@ -1,4 +1,9 @@
-from django.http import HttpResponse
+from django.views import generic
+from .models import file
 
-def index(request):
-    return HttpResponse("Temporary layout for the archive menu")
+class IndexView(generic.ListView):
+        template_name = "archive\index.html"
+        context_object_name = "all_files"
+
+        def get_queryset(self):
+            return file.objects.all()

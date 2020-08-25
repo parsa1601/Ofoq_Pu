@@ -1,0 +1,13 @@
+{% if all_files %}
+<h2>
+    {% for file in all_files %}
+        <li>
+            {{ file_upl }} -  {{ file.title }}{{ file.type }}
+        </li>
+    {% endfor %}
+</h2>
+{% else %}
+<h2>
+    halo
+</h2>
+{% endif %}
