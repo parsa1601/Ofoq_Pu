@@ -9,6 +9,10 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+    @classmethod
+    def get_authors_articles(cls, username):
+        return cls.objects.filter(author=username)
+
 
 class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
