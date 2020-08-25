@@ -4,6 +4,7 @@ from django.db import models
 class Article(models.Model):
     author = models.CharField(max_length=100)
     title = models.CharField(max_length=200)
+    summary = models.CharField(max_length=300)
     pub_date = models.DateField('تاریخ انتشار:')
 
     def __str__(self):
