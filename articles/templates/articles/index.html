@@ -6,11 +6,9 @@
     <body>
         <meta charset="UTF-8">
         {% for article in text %}
-            <div class="container">
-                <h2>{{ article.title}}</h2>
-                <blockquote><h4>{{ article.summary }}</h4></blockquote>
-                <hr>
-            </div>
+            <h2>{{ article.title}}</h2>
+            <blockquote><h4>{{ article.summary }}</h4></blockquote>
+            <hr>
         {% endfor %}
     </body>
     {% endif %}
