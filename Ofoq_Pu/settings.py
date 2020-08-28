@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'ofoqSchool.apps.OfoqschoolConfig',
     'archive.apps.ArchiveConfig',
     'articles.apps.ArticlesConfig',
     'django.contrib.admin',
@@ -123,6 +124,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# MEDIA_ROOT = os.path.join(BASE_DIR,'/media/')
-# MEDIA_URL = '/media/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'Ofoq_pu/static')
+]
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
 
