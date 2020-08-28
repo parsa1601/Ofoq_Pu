@@ -1,3 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>مدرســه آفاق</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'ofoqSchool/style.css' %}">
+</head>
+    <header>
+		<div class="top_menu">
+			<div class="upper_menu">
+					<span class="um_1" href="#">تنظیمات</span>
+					<span class="um_2">خدمات</span>
+					<span class="um_3">فرآیندها</span>
+					<span class="um_4">کیف پول</span>
+					<span class="um_5">ارتباط با مشتری</span>
+					<span class="um_6">سازمان</span>
+					<span class="um_7">کاربران</span>
+			</div>
+		</div>
+    </header>
+<body>
 {% if all_files %}
 <h2>
     <table class="table">
@@ -26,3 +48,5 @@
     halo
 </h2>
 {% endif %}
+</body>
+</html>
