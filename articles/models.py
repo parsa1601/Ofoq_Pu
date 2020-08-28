@@ -10,7 +10,7 @@ class Article(models.Model):
         'عنوان مقاله',
         max_length=200
     )
-    summary = models.CharField(
+    summary = models.TextField(
         'چکیده',
         max_length=300
     )
@@ -19,44 +19,39 @@ class Article(models.Model):
         'عکس اصلی',
         blank=True
     )
-    content1 = models.CharField(
-        'قسمت اول محتوا',
-        max_length=4000
+    content1 = models.TextField(
+        'قسمت اول محتوا'
     )
     image1 = models.ImageField(
         'عکس اول',
         blank=True
     )
-    content2 = models.CharField(
+    content2 = models.TextField(
         'قسمت دوم محتوا',
-        max_length=4000,
         blank=True
     )
     image2 = models.ImageField(
         'عکس دوم',
         blank=True
     )
-    content3 = models.CharField(
+    content3 = models.TextField(
         'قسمت سوم محتوا',
-        max_length=4000,
         blank=True
     )
     image3 = models.ImageField(
         'عکس سوم',
         blank=True
     )
-    content4 = models.CharField(
+    content4 = models.TextField(
         'قسمت چهارم محتوا',
-        max_length=4000,
         blank=True
     )
     image4 = models.ImageField(
         'عکس چهارم',
         blank=True
     )
-    content5 = models.CharField(
+    content5 = models.TextField(
         'قسمت پنجم محتوا',
-        max_length=4000,
         blank=True
     )
     image5 = models.ImageField(
