@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'ofoqSchool.apps.OfoqschoolConfig',
     'archive.apps.ArchiveConfig',
     'articles.apps.ArticlesConfig',
     'django.contrib.admin',
