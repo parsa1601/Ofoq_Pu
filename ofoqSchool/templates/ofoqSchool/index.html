@@ -1,0 +1,28 @@
+{% if all_files %}
+<h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Creator</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for file in all_files %}
+                <td>{{ file.Title }}</td>
+                <td>{{ file.Creator }}</td>
+                <td>
+                <a href="{{ file.file_url.url }}" target="_blank">
+                Download file
+                </a>
+                </td>
+            {% endfor %}
+        </tbody>
+    </table>
+</h2>
+{% else %}
+<h2>
+    halo
+</h2>
+{% endif %}
