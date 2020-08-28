@@ -4,17 +4,17 @@
         <thead>
             <tr>
                 <th>Title</th>
-                <th>Author</th>
+                <th>Creator</th>
                 <th>Download</th>
             </tr>
         </thead>
         <tbody>
             {% for file in all_files %}
                 <td>{{ file.Title }}</td>
-                <td>{{ file.Author }}</td>
+                <td>{{ file.Creator }}</td>
                 <td>
                 <a href="{{ file.file_url.url }}" target="_blank">
-                Download PDF
+                Download file
                 </a>
                 </td>
             {% endfor %}
