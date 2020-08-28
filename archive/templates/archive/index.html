@@ -4,14 +4,14 @@
         <thead>
             <tr>
                 <th>Title</th>
-                <th>Type</th>
+                <th>Author</th>
                 <th>Download</th>
             </tr>
         </thead>
         <tbody>
             {% for file in all_files %}
-                <td>{{ file.title }}</td>
-                <td>{{ file.type }}</td>
+                <td>{{ file.Title }}</td>
+                <td>{{ file.Author }}</td>
                 <td>
                 <a href="{{ file.file_url.url }}">
                 Download PDF
