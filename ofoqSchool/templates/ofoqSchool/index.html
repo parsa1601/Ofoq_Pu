@@ -1,51 +1,81 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>مدرســه آفاق</title>
     <link rel="stylesheet" type="text/css" href="{% static 'ofoqSchool/style.css' %}">
 </head>
-    <header>
-		<div class="top_menu">
-			<div class="upper_menu">
-					<span class="um_1" href="#">تنظیمات</span>
-					<span class="um_2">خدمات</span>
-					<span class="um_3">فرآیندها</span>
-					<span class="um_4">کیف پول</span>
-					<span class="um_5">ارتباط با مشتری</span>
-					<span class="um_6">سازمان</span>
-					<span class="um_7">کاربران</span>
-			</div>
-		</div>
-    </header>
+
 <body>
+
+    <div class="mui-appbar-home">
+
+    </div>
+
 {% if all_files %}
-<h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Creator</th>
-                <th>Download</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for file in all_files %}
-                <td>{{ file.Title }}</td>
-                <td>{{ file.Creator }}</td>
+    <div class="mainBoard">
+        <div class="titleDescription">
+            <p class="greetingText">
+            به مدرســه آفـاق خوش آمدید!
+            </p>
+        </div>
+
+            <table>
+              <tr>
+                <th class="fileURL">لینــک دانـلود</th>
+                <th class="fileCreator"> ایـــجاد کننــده </th>
+                <th class="fileTitle">   عنوان   </th>
+                <th class="audioFileLogo"></th>
+              </tr>
+              {% for file in all_files %}
+              <tr class="fileURL">
                 <td>
-                <a href="{{ file.file_url.url }}" target="_blank">
-                Download file
-                </a>
+                 <a
+                    href="{{ file.file_url.url }}" target="_blank">
+                    Download file
+                 </a>
                 </td>
-            {% endfor %}
-        </tbody>
-    </table>
-</h2>
+                <td class="fileCreator">
+                    {{ file.Creator }}
+                </td>
+                <td class="fileTitle">
+                    {{ file.Title }}
+                </td>
+                <td>
+                    <img src="gallery/audioFileIcon.png">
+                </td>
+              </tr>
+              {% endfor %}
+            </table>
+    </div>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
+    <p>hdknckdn</p>
 {% else %}
 <h2>
-    halo
+    هیچ فایل صوتی ای در سایت برگزاری نشده است
 </h2>
 {% endif %}
 </body>

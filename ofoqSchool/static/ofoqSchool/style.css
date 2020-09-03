@@ -1,22 +1,98 @@
 *{
   font-size: 25px;
 }
+
+
+.mui-appbar-home {
+    background: BLUE;
+    height: 40px;
+    color: #fff;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+.mui-appbar-home {
+    display: block;
+}
+div {
+    display: block;
+}
+.mainBoard{
+    background-color: white;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding-top: 1px;
+}
+.titleDescription{
+    direction: rtl;
+    text-align: center;
+}
+.greetingText{
+    padding-top: 0px;
+    padding-bottom: 2px;
+    font-size: 40px;
+    background-image: url("galley/bk-img.jpg");
+    border: 5px solid #dddddd;
+    border-color: blue;
+}
+.table{
+    direction: rtl;
+    margin-left:  5%;
+    margin-right: 5%;
+    padding-top: 20px;
+    width: 100%;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: right;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 5px;
+  padding-left: 2px;
+}
+.fileURL{
+  border: 1px solid #dddddd;
+  text-align: right;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 5px;
+  padding-left: 2px;
+  width: 40%;
+}
+.fileCreator{
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 5px;
+  padding-left: 2px;
+  width: 40%;
+}
+.fileTitle{
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 5px;
+  padding-left: 2px;
+  width: 30%;
+}
+.audioFileLogo{
+  border: 1px solid #dddddd;
+  text-align: right;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 5px;
+  padding-left: 2px;
+  width: 10%;
+}
+
+body{
+  background-color: #D6E2E7;
+}
+
 body{
   background-image: url("galley/bk-img.jpg");
-}
-.upper_menu{
-  display: flex;
-  direction: rtl;
-}
-.upper_menu span{
-  position: sticky;
-  text-decoration: none;
-  background-color: #1222ad;
-  color:#BDB2B0;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 50px;
-  padding-right: 50px;
-  transition: 0.7s ease;
-
 }
