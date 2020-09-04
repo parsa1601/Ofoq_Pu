@@ -1,4 +1,5 @@
 from django.db import models
+from utilities.jalali_utils import jalali_convert
 
 
 class Article(models.Model):
@@ -14,7 +15,7 @@ class Article(models.Model):
         'چکیده',
         max_length=300
     )
-    pub_date = models.DateField('تاریخ انتشار')
+    pub_date = models.DateTimeField('تاریخ انتشار')
     main_image = models.ImageField(
         'عکس اصلی',
         blank=True
@@ -58,6 +59,10 @@ class Article(models.Model):
         'عکس پنجم',
         blank=True
     )
+
+    def jalali_publish(self):
+        return jalali_convert(self.pub_date)
+    jalali_publish.short_description = 'تاریخ انتشار'
 
     def __str__(self):
         return self.title
