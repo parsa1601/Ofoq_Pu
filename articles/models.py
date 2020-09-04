@@ -68,6 +68,7 @@ class Article(models.Model):
 
     class Meta:
         verbose_name = 'مقاله'
+        verbose_name_plural = 'مقالات'
 
 
 class Comment(models.Model):

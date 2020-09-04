@@ -19,3 +19,7 @@ class Audio_File(models.Model):
 
     def __str__(self):
         return self.Title
+
+    class Meta:
+        verbose_name = 'فایل صوتی'
+        verbose_name_plural = 'فایل های صوتی'

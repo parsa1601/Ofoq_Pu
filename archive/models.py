@@ -19,3 +19,7 @@ class PDF(models.Model):
 
     def __str__(self):
         return self.Title
+
+    class Meta:
+        verbose_name = 'نشریه'
+        verbose_name_plural = 'نشریات'
