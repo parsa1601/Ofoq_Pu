@@ -66,6 +66,9 @@ class Article(models.Model):
     def get_authors_articles(cls, username):
         return cls.objects.filter(author=username)
 
+    class Meta:
+        verbose_name = 'مقاله'
+
 
 class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
