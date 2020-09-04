@@ -1,5 +1,5 @@
 from django.views import generic
-from .models import Audio_File
+from .models import AudioFile
 
 
 class IndexView(generic.ListView):
@@ -7,4 +7,4 @@ class IndexView(generic.ListView):
     context_object_name = "all_files"
 
     def get_queryset(self):
-        return Audio_File.objects.all()
+        return AudioFile.objects.all()

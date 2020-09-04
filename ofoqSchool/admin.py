@@ -1,6 +1,12 @@
 from django.contrib import admin
-from .models import Audio_File
+from .models import AudioFile
 
-admin.site.register(Audio_File)
+class AudioAdmin(admin.ModelAdmin):
+    list_display = ('title', 'creator', 'date')
+    list_filter = ('creator', 'date')
+    search_fields = ('title', 'creator')
+    ordering = ('date',)
 
-# Register your models here.
+admin.site.register(AudioFile, AudioAdmin)
+
+

@@ -1,6 +1,10 @@
 from django.contrib import admin
 from .models import PDF
 
-admin.site.register(PDF)
+class PdfAdmin(admin.ModelAdmin):
+    list_display = ('title', 'date')
+    list_filter = ('date',)
+    search_fields = ('title',)
+    ordering = ('date',)
 
-# Register your models here.
+admin.site.register(PDF, PdfAdmin)

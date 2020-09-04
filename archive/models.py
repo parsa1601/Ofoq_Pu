@@ -1,15 +1,15 @@
 from django.db import models
 
 class PDF(models.Model):
-    Title = models.CharField(
+    title = models.CharField(
                             'عنوان',
                             max_length=800
                             )
-    Author = models.CharField(
+    author = models.CharField(
                             'نویسنده',
                             max_length=100
                             )
-    Date = models.DateField(
+    date = models.DateField(
                             'تاریخ انتشار:'
                             )
     file_url = models.FileField(
@@ -18,7 +18,7 @@ class PDF(models.Model):
                                 )
 
     def __str__(self):
-        return self.Title
+        return self.title
 
     class Meta:
         verbose_name = 'نشریه'

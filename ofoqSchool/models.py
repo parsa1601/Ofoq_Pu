@@ -1,15 +1,15 @@
 from django.db import models
 
-class Audio_File(models.Model):
-    Title = models.CharField(
+class AudioFile(models.Model):
+    title = models.CharField(
                             'عنوان',
                             max_length=800
                             )
-    Creator = models.CharField(
+    creator = models.CharField(
                             'ایجادکننده',
                             max_length=100
                             )
-    Date = models.DateField(
+    date = models.DateField(
                             'تاریخ انتشار:'
                             )
     file_url = models.FileField(
@@ -18,7 +18,7 @@ class Audio_File(models.Model):
                                 )
 
     def __str__(self):
-        return self.Title
+        return self.title
 
     class Meta:
         verbose_name = 'فایل صوتی'
