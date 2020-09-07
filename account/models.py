@@ -56,8 +56,8 @@ class Account(AbstractBaseUser):
     email = models.EmailField('ایمیل', blank=True, max_length=100)
     phone = models.CharField('تلفن همراه', blank=True, max_length=15)
     username = models.CharField('نام کاربری', unique=True, max_length=50)
-    first_name = models.CharField('نام', max_length=50)
-    last_name = models.CharField('نام خانوادگی', max_length=50)
+    first_name = models.CharField('نام', unique=True, max_length=50)
+    last_name = models.CharField('نام خانوادگی', unique=True, max_length=50)
     MONTH_CHOICES = (
         ('فروردین','فروردین'),
         ('اردیبهشت','اردیبهشت'),
@@ -130,3 +130,8 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+
+
+    class Meta:
+        verbose_name = 'کاربر'
+        verbose_name_plural = 'کاربران'
