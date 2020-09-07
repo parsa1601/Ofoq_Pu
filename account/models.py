@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class MyAccountManager(BaseUserManager):
-    def create_user(self, username, first_name, last_name, city, education, organization, password=None):
+    def create_user(self, username, first_name, last_name, city, education, field, organization, password=None):
         if not username:
             raise ValueError('داشتن نام کاربری الزامی است!')
         if not first_name:
@@ -16,29 +16,32 @@ class MyAccountManager(BaseUserManager):
             raise ValueError('وارد کردن پایه/مقطع تحصیلی الزامی است!')
         if not organization:
             raise ValueError('وارد کردن مدرسه/دانشگاه/محل کار الزامی است!')
+        if not field:
+            raise ValueError('وارد کردن رشته تحصیلی الزامی است!')
 
         user = self.model(
-            email=self.normalize_email(email),
             username=username,
             first_name=first_name,
             last_name=last_name,
             city=city,
             education=education,
+            field=field,
             organization=organization,
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, first_name, last_name, city, education, organization, password):
+    def create_superuser(self, username, first_name, last_name, city, education, field, organization,
+                         password):
         user = self.create_user(
-            email=self.normalize_email(email),
             username=username,
             password=password,
             first_name=first_name,
             last_name=last_name,
             city=city,
             education=education,
+            field=field,
             organization=organization,
         )
         user.is_admin = True
@@ -51,7 +54,7 @@ class MyAccountManager(BaseUserManager):
 
 class Account(AbstractBaseUser):
     email = models.EmailField('ایمیل', blank=True, max_length=100)
-    phone = models.PhoneNumberField('تلفن همراه', blank=True)
+    phone = models.CharField('تلفن همراه', blank=True, max_length=15)
     username = models.CharField('نام کاربری', unique=True, max_length=50)
     first_name = models.CharField('نام', max_length=50)
     last_name = models.CharField('نام خانوادگی', max_length=50)
@@ -69,15 +72,17 @@ class Account(AbstractBaseUser):
         ('بهمن','بهمن'),
         ('اسفند','اسفند'),
     )
-    birth_month = models.CharField('ماه تولد', choises=MONTH_CHOICES)
+    birth_month = models.CharField('ماه تولد', blank=True, choices=MONTH_CHOICES, max_length=10)
     birth_year = models.IntegerField(
         'سال تولد',
+        blank=True,
         validators=[
             MinValueValidator(1300),
         ]
     )
     birth_day = models.IntegerField(
         'روز تولد',
+        blank=True,
         validators=[
             MaxValueValidator(31),
             MinValueValidator(1)
@@ -97,22 +102,23 @@ class Account(AbstractBaseUser):
         ('دانشجوی دکتری','دانشجوی دکتری'),
         ('شاغل','شاغل')
     )
-    education = CharField('پایه/مقطع تحصیلی', choices=EDUCATION_CHOICE)
-    organization = CharField('نام مدرسه/دانشگاه/محل کار', max_length=50)
+    education = models.CharField('پایه/مقطع تحصیلی', choices=EDUCATION_CHOICE, max_length=30)
+    field = models.CharField('رشته تحصیلی', max_length=50)
+    organization = models.CharField('نام مدرسه/دانشگاه/محل کار', max_length=50)
     date_joined = models.DateTimeField('تاریخ عضویت', auto_now_add=True)
-    is_vip = models.BooleanField('کاربر ویژه (می تواند تمام مقالات را بخواند)', default=false)
+    is_vip = models.BooleanField('کاربر ویژه (می تواند تمام مقالات را بخواند)', default=False)
     is_admin = models.BooleanField('کاربر ادمین باشد', default=False)
-    is_active = models.BooleanField('فعال است', default=true)
-    is_staff = models.BooleanField('کاربر می تواند وارد صفحه ادمین شود', default=false)
+    is_active = models.BooleanField('فعال است', default=True)
+    is_staff = models.BooleanField('کاربر می تواند وارد صفحه ادمین شود', default=False)
     is_superuser = models.BooleanField(
         'کاربر می تواند به تمام محتواهای سایت دسترسی داشته و آنها را تغییر دهد',
-        default=false
+        default=False
     )
 
     objects = MyAccountManager()
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name', 'city', 'education', 'organization']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'city', 'education', 'organization', 'field']
 
     def __str__(self):
         return self.username
