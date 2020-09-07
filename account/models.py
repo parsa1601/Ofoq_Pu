@@ -141,14 +141,38 @@ class Request(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE)
     content = models.TextField('پیام به ادمین', blank=True, null=True)
     response = models.TextField('پاسخ ادمین', blank=True, null=True)
+    date = models.DateTimeField('تاریخ درخواست')
+
+
+    class Meta:
+        abstract = True
+
+
+class ArticleRequest(Request):
+    title = models.CharField('عنوان (حداکثر 100 کاراکتر)', max_length=100)
+    summary = models.TextField('چکیده پیشنهادی متن (حداکثر 300 کاراکتر)', max_length=300)
+    file = models.FileField('متن خود را در قالب فایل word یا pdf آپلود کنید')
+    image1 = models.ImageField('عکس اول (اختیاری)', blank=True, null=True)
+    image2 = models.ImageField('عکس دوم (اختیاری)', blank=True, null=True)
+    image3 = models.ImageField('عکس سوم (اختیاری)', blank=True, null=True)
+    image4 = models.ImageField('عکس چهارم (اختیاری)', blank=True, null=True)
+    image5 = models.ImageField('عکس پنجم (اختیاری)', blank=True, null=True)
+    is_accepted = models.BooleanField('منتشر می شود', default=False)
+
+
+    class Meta:
+        verbose_name = 'درخواست انتشار مقاله'
+        verbose_name_plural = 'درخواست های انتشار مقاله'
+
+
+
+class NotArticle(Request):
     TYPE_CHOICES = (
         ('درخواست ارتقاء به کاربر ویژه', 'درخواست ارتقاء به کاربر ویژه'),
-        ('درخواست انتشار مقاله', 'درخواست انتشار مقاله'),
         ('انتقاد یا پیشنهاد', 'انتقاد یا پیشنهاد'),
         ('دیگر', 'دیگر')
     )
     type = models.CharField('نوع پیام', choices=TYPE_CHOICES, max_length=30)
-    date = models.DateTimeField('تاریخ درخواست')
 
 
     class Meta:

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from account.models import Account, Request
+from account.models import Account, NotArticle, ArticleRequest
 
 
 class AccountAdmin(admin.ModelAdmin):
@@ -8,11 +8,18 @@ class AccountAdmin(admin.ModelAdmin):
     search_fields = ('username', 'first_name', 'last_name', 'organization', 'field')
     ordering = ('last_name', 'first_name', 'username')
 
-class RequestAdmin(admin.ModelAdmin):
+class NotArticleAdmin(admin.ModelAdmin):
     list_display = ('user', 'type', 'date')
     list_filter = ('user', 'type', 'date')
     search_fields = ('user', 'type', 'date')
     ordering = ('date',)
 
+class ArticleRequestAdmin(admin.ModelAdmin):
+    list_display = ('user', 'date')
+    list_filter = ('user', 'date')
+    search_fields = ('user', 'date')
+    ordering = ('date',)
+
 admin.site.register(Account, AccountAdmin)
-admin.site.register(Request, RequestAdmin)
+admin.site.register(NotArticle, NotArticleAdmin)
+admin.site.register(ArticleRequest, ArticleRequestAdmin)
