@@ -1,64 +1,24 @@
 from django.db import models
 from utilities.jalali_utils import jalali_convert
+from account.models import Account
 
 
 class Article(models.Model):
-    author = models.CharField(
-        'نویسنده',
-        max_length=100
-    )
-    title = models.CharField(
-        'عنوان مقاله',
-        max_length=200
-    )
-    summary = models.TextField(
-        'چکیده',
-        max_length=300
-    )
+    author = models.ForeignKey(Account, verbose_name='نویسنده', on_delete=models.CASCADE)
+    title = models.CharField('عنوان مقاله',max_length=200)
+    summary = models.TextField('چکیده',max_length=300)
     pub_date = models.DateTimeField('تاریخ انتشار')
-    main_image = models.ImageField(
-        'عکس اصلی',
-        blank=True
-    )
-    content1 = models.TextField(
-        'قسمت اول محتوا'
-    )
-    image1 = models.ImageField(
-        'عکس اول',
-        blank=True
-    )
-    content2 = models.TextField(
-        'قسمت دوم محتوا',
-        blank=True
-    )
-    image2 = models.ImageField(
-        'عکس دوم',
-        blank=True
-    )
-    content3 = models.TextField(
-        'قسمت سوم محتوا',
-        blank=True
-    )
-    image3 = models.ImageField(
-        'عکس سوم',
-        blank=True
-    )
-    content4 = models.TextField(
-        'قسمت چهارم محتوا',
-        blank=True
-    )
-    image4 = models.ImageField(
-        'عکس چهارم',
-        blank=True
-    )
-    content5 = models.TextField(
-        'قسمت پنجم محتوا',
-        blank=True
-    )
-    image5 = models.ImageField(
-        'عکس پنجم',
-        blank=True
-    )
+    main_image = models.ImageField('عکس اصلی',blank=True)
+    content1 = models.TextField('قسمت اول محتوا')
+    image1 = models.ImageField('عکس اول',blank=True)
+    content2 = models.TextField('قسمت دوم محتوا',blank=True)
+    image2 = models.ImageField('عکس دوم',blank=True)
+    content3 = models.TextField('قسمت سوم محتوا',blank=True)
+    image3 = models.ImageField('عکس سوم',blank=True)
+    content4 = models.TextField('قسمت چهارم محتوا',blank=True)
+    image4 = models.ImageField('عکس چهارم',blank=True)
+    content5 = models.TextField('قسمت پنجم محتوا',blank=True)
+    image5 = models.ImageField('عکس پنجم',blank=True)
 
     def jalali_publish(self):
         return jalali_convert(self.pub_date)
