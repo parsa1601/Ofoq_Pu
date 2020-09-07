@@ -72,9 +72,10 @@ class Account(AbstractBaseUser):
         ('بهمن','بهمن'),
         ('اسفند','اسفند'),
     )
-    birth_month = models.CharField('ماه تولد', blank=True, choices=MONTH_CHOICES, max_length=10)
+    birth_month = models.CharField('ماه تولد', null=True, blank=True, choices=MONTH_CHOICES, max_length=10)
     birth_year = models.IntegerField(
         'سال تولد',
+        null=True,
         blank=True,
         validators=[
             MinValueValidator(1300),
@@ -82,6 +83,7 @@ class Account(AbstractBaseUser):
     )
     birth_day = models.IntegerField(
         'روز تولد',
+        null=True,
         blank=True,
         validators=[
             MaxValueValidator(31),
