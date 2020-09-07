@@ -135,3 +135,22 @@ class Account(AbstractBaseUser):
     class Meta:
         verbose_name = 'کاربر'
         verbose_name_plural = 'کاربران'
+
+
+class Request(models.Model):
+    user = models.ForeignKey(Account, on_delete=models.CASCADE)
+    content = models.TextField('پیام به ادمین', blank=True, null=True)
+    response = models.TextField('پاسخ ادمین', blank=True, null=True)
+    TYPE_CHOICES = (
+        ('درخواست ارتقاء به کاربر ویژه', 'درخواست ارتقاء به کاربر ویژه'),
+        ('درخواست انتشار مقاله', 'درخواست انتشار مقاله'),
+        ('انتقاد یا پیشنهاد', 'انتقاد یا پیشنهاد'),
+        ('دیگر', 'دیگر')
+    )
+    type = models.CharField('نوع پیام', choices=TYPE_CHOICES, max_length=30)
+    date = models.DateTimeField('تاریخ درخواست')
+
+
+    class Meta:
+        verbose_name = 'درخواست'
+        verbose_name_plural = 'درخواست ها و پیشنهادات'

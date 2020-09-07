@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'ofoqSchool.apps.OfoqschoolConfig',
     'archive.apps.ArchiveConfig',
     'articles.apps.ArticlesConfig',
+    'account.apps.AccountConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'utilities',
-    'account',
 ]
 
 MIDDLEWARE = [
